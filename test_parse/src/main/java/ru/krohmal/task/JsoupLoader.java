@@ -17,9 +17,21 @@ import java.util.List;
  * Created by Comp on 15.11.2017.
  */
 public class JsoupLoader {
-    String html = "https://ru.wikipedia.org/wiki/Пляжный_теннис";
+    static String html = "https://ru.wikipedia.org/wiki/Пляжный_теннис";
 
-    public Document getDocum() throws IOException {
+    public static void main(String[] args) {
+        String result = null;
+
+        Document document = null;
+        try {
+            document = getDocum();
+            Elements elements = document.getAllElements();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Document getDocum() throws IOException {
         return Jsoup.parse(new File(html), "UTF-8");
     }
 
